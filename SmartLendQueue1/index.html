@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartLendQueue: Online Borrowing with Real-Time Availability Control</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Login Section -->
+  <div id="login-section" class="section">
+    <img src="images/logo.png" alt="SmartLendQueue Logo" class="login-logo" />
+    <h2>SmartLendQueue: Online Borrowing with Real-Time Availability Control</h2>
+    <label for="role">Select Role:</label>
+    <select id="role">
+      <option value="student">Student</option>
+      <option value="faculty">Faculty</option>
+      <option value="admin">Admin</option>
+    </select><br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password" /><br />
+    <button onclick="loginUser()">Login</button>
+  </div>
+
+  <!-- Borrow Section -->
+  <div id="borrow-section" class="section" style="display: none;">
+    <h2>USTP Balubal Office - Borrow Item</h2>
+    <form id="borrow-form">
+      <label for="borrower-name">Borrower Name:</label>
+      <input type="text" id="borrower-name" placeholder="Full Name" required /><br />
+
+      <label for="course">Department:</label>
+      <select id="course" required>
+        <option value="">--Select Department--</option>
+        <option value="BSIT">BSIT</option>
+        <option value="BAT">BAT</option>
+        <option value="BSA">BSA</option>
+        <option value="BTLED">BTLED</option>
+      </select><br />
+
+      <label for="phone-number">Phone Number:</label>
+      <input type="tel" id="phone-number" placeholder="Enter phone number" required /><br />
+
+      <label for="start-time">Start Time:</label>
+      <input type="datetime-local" id="start-time" required /><br />
+
+      <label for="end-time">End Time:</label>
+      <input type="datetime-local" id="end-time" required /><br />
+
+      <label for="purpose">Purpose of Borrowing:</label>
+      <textarea id="purpose" placeholder="State the purpose of borrowing" required></textarea><br />
+
+      <label>Available Items:</label>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Projector</h3>
+          <span class="availability-badge" data-item="Projector">Checking...</span>
+          <p>HD projector for presentations.</p>
+          <div class="item-image">
+            <img src="images/projector.jpg" alt="Projector">
+          </div>
+          <button type="button" class="select-btn" data-item="Projector">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Chair</h3>
+          <span class="availability-badge" data-item="Chair">Checking...</span>
+          <p>Folding chair for extra seating.</p>
+          <div class="item-image">
+            <img src="images/images.jpg" alt="Chair">
+          </div>
+          <button type="button" class="select-btn" data-item="Chair">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Microphones</h3>
+          <span class="availability-badge" data-item="Microphones">Checking...</span>
+          <p>Wireless microphones for events.</p>
+          <div class="item-image">
+            <img src="images/mic.jpg.jpg" alt="Microphones">
+          </div>
+          <button type="button" class="select-btn" data-item="Microphones">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Extension Wire</h3>
+          <span class="availability-badge" data-item="Extension Wire">Checking...</span>
+          <p>5-meter extension cord for power needs.</p>
+          <div class="item-image">
+            <img src="images/wire.jpg" alt="Extension Wire">
+          </div>
+          <button type="button" class="select-btn" data-item="Extension Wire">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Markers</h3>
+          <span class="availability-badge" data-item="Markers">Checking...</span>
+          <p>Set of whiteboard markers in assorted colors.</p>
+          <div class="item-image">
+            <img src="images/marker.jpg" alt="Markers">
+          </div>
+          <button type="button" class="select-btn" data-item="Markers">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Speakers</h3>
+          <span class="availability-badge" data-item="Speakers">Checking...</span>
+          <p>Portable speakers for audio playback.</p>
+          <div class="item-image">
+            <img src="images/SPEAKER.jpg" alt="Speakers">
+          </div>
+          <button type="button" class="select-btn" data-item="Speakers">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Amplifiers</h3>
+          <span class="availability-badge" data-item="Amplifiers">Checking...</span>
+          <p>Audio amplifiers for enhanced sound output.</p>
+          <div class="item-image">
+            <img src="images/ampli.jpg" alt="Amplifiers">
+          </div>
+          <button type="button" class="select-btn" data-item="Amplifiers">Select</button>
+        </div>
+        <div class="item-card">
+          <h3>Cords</h3>
+          <span class="availability-badge" data-item="Cords">Checking...</span>
+          <p>Assorted audio and video cables.</p>
+          <div class="item-image">
+            <img src="images/CORD.jpg" alt="Cords">
+          </div>
+          <button type="button" class="select-btn" data-item="Cords">Select</button>
+        </div>
+      </div>
+      <input type="hidden" id="item" name="item" required />
+
+      <button type="submit">Borrow</button>
+    </form>
+    <div id="availability-message" class="message"></div>
+    <button onclick="logoutUser()" style="margin-top: 20px;">Logout</button>
+  </div>
+
+  <!-- Admin Section -->
+  <div id="admin-section" class="section" style="display: none;">
+    <h2></h2>
+    <div id="booking-list"></div>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
